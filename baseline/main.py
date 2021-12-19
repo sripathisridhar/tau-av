@@ -25,6 +25,8 @@ def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--features_dir', type=str, required=False,
                         help='Path to OpenL3 features directory')
+    parser.add_argument('--config', type=str, required=False,
+                        help='Path to config yaml file')
     args, _ = parser.parse_known_args()
     return args
 
@@ -33,12 +35,15 @@ if __name__ == '__main__':
 
     # what do i need to train the model?
     # get configs, args
-    config = yaml.safe_load(open('baseline/config.yml'))
     args = get_args()
     if torch.cuda.is_available():
         device = 'cuda:0'
     else:
         device = 'cpu'
+
+    if args.config is None:
+        args.config = 'baseline/config.yml'
+    config = yaml.safe_load(open(args.config))
 
     # create a train dataset
     train_dataset = TAUDataset('train', args.features_dir)
@@ -74,4 +79,3 @@ if __name__ == '__main__':
     )
 
     train(model, train_loader, device, optimizer, loss_fn, config['N_EPOCHS'], val_loader)
-    a=1

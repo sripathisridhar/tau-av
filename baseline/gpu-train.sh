@@ -11,4 +11,5 @@
 module purge > /dev/null 2>&1
 
 conda activate tau-torch
-srun python main.py --features_dir /research/mc232/tau-audiovisual/features_data
+srun python main.py --features_dir /research/mc232/tau-audiovisual/features_data \
+--config /home/s/ss645/dlproject/tau-av/baseline/config.yml
