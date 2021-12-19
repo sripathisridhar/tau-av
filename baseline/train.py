@@ -10,8 +10,8 @@ SUBMISSION_MODE = 0
 
 def train_one_epoch(model, train_loader, device, optimizer, loss_fn, val_loader):
 
+    model.train()
     for batch_idx, data in enumerate(tqdm(train_loader)):
-        optimizer.zero_grad()
 
         inputs, targets = data[0], data[1]
         inputs = inputs.to(device)
@@ -22,13 +22,16 @@ def train_one_epoch(model, train_loader, device, optimizer, loss_fn, val_loader)
 
         # loss, gradient
         loss = loss_fn(outputs, targets)
+        optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+
+        if not SUBMISSION_MODE:
+            wandb.log({'batch_train_loss':loss})
 
 
 def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=None, output_dir='./'):
 
-    model.train()
     start_time = time()
     val_losses = []
 
