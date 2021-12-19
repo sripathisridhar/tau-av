@@ -1,0 +1,16 @@
+{
+    "os": "macOS-11.6-x86_64-i386-64bit",
+    "python": "3.9.7",
+    "heartbeatAt": "2021-12-19T00:32:46.801267",
+    "startedAt": "2021-12-19T00:32:43.771173",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/sripathisridhar/PycharmProjects/tau-av/baseline/main.py",
+    "codePath": "baseline/main.py",
+    "host": "sripathi-mbp.resource.campus.njit.edu",
+    "username": "sripathisridhar",
+    "executable": "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/bin/python"
+}

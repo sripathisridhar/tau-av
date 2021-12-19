@@ -1,0 +1,29 @@
+  0% 0/5932 [00:00<?, ?it/s]/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/dataloader.py:478: UserWarning: This DataLoader will create 16 worker processes in total. Our suggested max number of worker in current system is 8 (`cpuset` is not taken into account), which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+  0% 0/5932 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/tqdm/std.py", line 1180, in __iter__
+    for obj in iterable:
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 359, in __iter__
+    return self._get_iterator()
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 305, in _get_iterator
+    return _MultiProcessingDataLoaderIter(self)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 918, in __init__
+    w.start()
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/context.py", line 284, in _Popen
+    return Popen(process_obj)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/popen_spawn_posix.py", line 47, in _launch
+    reduction.dump(process_obj, fp)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/multiprocessing/reduction.py", line 60, in dump
+    ForkingPickler(file, protocol).dump(obj)
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/h5py/_hl/base.py", line 368, in __getnewargs__
+    raise TypeError("h5py objects cannot be pickled")
+TypeError: h5py objects cannot be pickled

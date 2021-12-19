@@ -1,0 +1,70 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  3% 201/5932 [01:20<38:20,  2.49it/s]
+Traceback (most recent call last):
+  File "/Users/sripathisridhar/PycharmProjects/tau-av/baseline/main.py", line 76, in <module>
+    train(model, train_loader, device, optimizer, loss_fn, config['N_EPOCHS'], val_loader)
+  File "/Users/sripathisridhar/PycharmProjects/tau-av/baseline/train.py", line 36, in train
+    train_one_epoch(model, train_loader, device, optimizer, loss_fn, val_loader)
+  File "/Users/sripathisridhar/PycharmProjects/tau-av/baseline/train.py", line 13, in train_one_epoch
+    for batch_idx, data in enumerate(tqdm(train_loader)):
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/tqdm/std.py", line 1180, in __iter__
+    for obj in iterable:
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 521, in __next__
+    data = self._next_data()
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/dataloader.py", line 561, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 49, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/torch/utils/data/_utils/fetch.py", line 49, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/Users/sripathisridhar/PycharmProjects/tau-av/baseline/dataset.py", line 69, in __getitem__
+    emb_video = np.array(hf_video[video_name])
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "/Users/sripathisridhar/opt/anaconda3/envs/tau-torch/lib/python3.9/site-packages/h5py/_hl/group.py", line 305, in __getitem__
+    oid = h5o.open(self.id, self._e(name), lapl=self._lapl)
+  File "h5py/_objects.pyx", line 54, in h5py._objects.with_phil.wrapper
+  File "h5py/_objects.pyx", line 55, in h5py._objects.with_phil.wrapper
+  File "h5py/h5o.pyx", line 190, in h5py.h5o.open
+  File "h5py/h5i.pyx", line 43, in h5py.h5i.wrap_identifier
+  File "<frozen importlib._bootstrap>", line 398, in parent
+KeyboardInterrupt
