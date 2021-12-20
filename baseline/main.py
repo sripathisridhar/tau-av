@@ -40,6 +40,7 @@ if __name__ == '__main__':
         device = 'cuda:0'
     else:
         device = 'cpu'
+    print(f'Using device {device}')
 
     if args.config is None:
         args.config = 'baseline/config.yml'
@@ -78,4 +79,5 @@ if __name__ == '__main__':
         weight_decay=config['WEIGHT_DECAY']
     )
 
+    print('Training model now...')
     train(model, train_loader, device, optimizer, loss_fn, config['N_EPOCHS'], val_loader)

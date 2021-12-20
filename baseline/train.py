@@ -36,6 +36,7 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
     val_losses = []
 
     for i in range(n_epochs):
+        print(f'Epoch {i+1}...')
         train_one_epoch(model, train_loader, device, optimizer, loss_fn, val_loader)
 
         # validation
@@ -47,6 +48,7 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
                 # store model
                 with open(os.path.join(output_dir, 'model.pth'), 'wb') as f:
                     torch.save(model.to('cpu').state_dict(), f)
+        print('-'*20)
 
     print(f'Model training time took {(time() - start_time) / 60000} minutes')
 
