@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --job-name=tau-baseline
+#SBATCH --job-name=tau-audio
 #SBATCH --output=%x.%j.out # %x.%j expands to JobName.JobID
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1

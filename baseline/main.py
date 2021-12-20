@@ -7,6 +7,8 @@ import wandb
 from torch.utils.data import DataLoader
 
 from dataset import TAUDataset
+from audio_dataset import TAUAudioDataset
+from video_dataset import TAUVideoDataset
 from model import BaselineModel
 from train import train
 
@@ -46,16 +48,31 @@ if __name__ == '__main__':
         args.config = 'baseline/config.yml'
     config = yaml.safe_load(open(args.config))
 
-    # create a train dataset
-    train_dataset = TAUDataset('train', args.features_dir)
-    a = train_dataset[0]
+    # create train and val datasets
+    if config['MODE'] == 'audio':
+        train_dataset = TAUAudioDataset('train', args.features_dir)
+        val_dataset = TAUAudioDataset('val', args.features_dir)
+        test_dataset = TAUAudioDataset('test', args.features_dir)
+        config['EMB'] = 512
+
+    elif config['MODE'] == 'video':
+        train_dataset = TAUVideoDataset('train', args.features_dir)
+        val_dataset = TAUVideoDataset('val', args.features_dir)
+        test_dataset = TAUVideoDataset('test', args.features_dir)
+        config['EMB'] = 512
+
+    else: # audio-visual
+        train_dataset = TAUDataset('train', args.features_dir)
+        val_dataset = TAUDataset('val', args.features_dir)
+        test_dataset = TAUDataset('test', args.features_dir)
+
     train_loader = DataLoader(train_dataset, batch_size=config['BATCH_SIZE'],
                               shuffle=True,
                               num_workers=0,
                               drop_last=True)
 
     # val data loader
-    val_dataset = TAUDataset('val', args.features_dir)
+
     val_loader = DataLoader(val_dataset, batch_size=config['BATCH_SIZE'],
                             shuffle=True,
                             num_workers=0,
