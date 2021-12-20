@@ -40,7 +40,7 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
 
         # validation
         if val_loader is not None:
-            val_loss, val_accuracy = validate(model, val_loader)
+            val_loss, val_accuracy = validate(model, device, val_loader, loss_fn)
             val_losses.append(val_loss)
 
             if val_losses[-1] == np.min(val_losses):
@@ -51,7 +51,7 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
     print(f'Model training time took {(time() - start_time) / 60000} minutes')
 
 
-def validate(model, device, val_loader, loss_fn, ):
+def validate(model, device, val_loader, loss_fn):
 
     model.eval()
     correct = 0
