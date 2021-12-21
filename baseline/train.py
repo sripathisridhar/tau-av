@@ -43,7 +43,7 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
         # validation
         if val_loader is not None:
             val_loss, val_accuracy = validate(model, device, val_loader, loss_fn)
-            val_losses.append(val_loss.data.item())
+            val_losses.append(val_loss)
 
             if val_losses[-1] == np.min(val_losses):
                 # store model
