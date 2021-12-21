@@ -24,6 +24,9 @@ class TAUDataset(data.Dataset):
             self.path = os.path.join(self.features_dir, 'audio_features_data/val.hdf5')
             #self.path_input = '/lustre/wang9/all_features_data/audio_features_data/cv.hdf5'
 
+        if self.subset == 'test':
+            self.path = os.path.join(self.features_dir, 'audio_features_data/tt.hdf5')
+
         # get means and std deviations to normalize the features
         global_mean_std_path_audio = os.path.join(self.features_dir,
                                                   'audio_features_data/global_mean_std.npz')
