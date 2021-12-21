@@ -50,6 +50,8 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
                 with open(os.path.join(output_dir, f'model{i}.pth'), 'wb') as f:
                     torch.save(model.to('cpu').state_dict(), f)
         print('-'*20)
+        if not SUBMISSION_MODE:
+            wandb.log({'epoch': i})
 
     print(f'Model training time took {(time() - start_time)} s')
 
