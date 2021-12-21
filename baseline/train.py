@@ -1,4 +1,4 @@
-from datetime import time
+from time import time
 from tqdm import tqdm
 import wandb
 import torch
