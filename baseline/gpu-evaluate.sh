@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --job-name=av-eval
+#SBATCH --job-name=video-eval
 #SBATCH --output=%x.%j.out # %x.%j expands to JobName.JobID
 #SBATCH --nodes=1
 #SBATCH --tasks-per-node=1
@@ -12,4 +12,4 @@ module purge > /dev/null 2>&1
 
 conda activate tau-torch
 srun python evaluate.py --features_path /research/mc232/tau-av/features_data \
---model_type audio_video
+--model_type video
