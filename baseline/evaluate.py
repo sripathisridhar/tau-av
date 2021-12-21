@@ -1,6 +1,3 @@
-# Author: Shanshan Wang
-# Used with modifications
-
 import numpy as np
 import os
 import torch

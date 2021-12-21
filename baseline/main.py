@@ -18,7 +18,7 @@ from train import train
 # train on lochness
 # evaluate
 # conditional ignore wandb for submission
-SUBMISSION_MODE = 0
+SUBMISSION_MODE = 1
 
 
 def get_args():

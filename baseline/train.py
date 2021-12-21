@@ -5,7 +5,7 @@ import torch
 import os
 import numpy as np
 
-SUBMISSION_MODE = 0
+SUBMISSION_MODE = 1
 
 
 def train_one_epoch(model, train_loader, device, optimizer, loss_fn, val_loader):
