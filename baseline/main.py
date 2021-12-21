@@ -97,4 +97,9 @@ if __name__ == '__main__':
     )
 
     print('Training model now...')
-    train(model, train_loader, device, optimizer, loss_fn, config['N_EPOCHS'], val_loader)
+    if config['MODE'] in ['audio', 'video']:
+        train(model, train_loader, device, optimizer, loss_fn, config['N_EPOCHS'],
+              val_loader, output_dir=config['MODE'])
+    else:
+        train(model, train_loader, device, optimizer, loss_fn, config['N_EPOCHS'],
+              val_loader)

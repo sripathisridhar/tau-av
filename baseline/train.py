@@ -37,6 +37,7 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
 
     for i in range(n_epochs):
         print(f'Epoch {i+1}...')
+        model.to(device)
         train_one_epoch(model, train_loader, device, optimizer, loss_fn, val_loader)
 
         # validation
@@ -46,11 +47,11 @@ def train(model, train_loader, device, optimizer, loss_fn, n_epochs, val_loader=
 
             if val_losses[-1] == np.min(val_losses):
                 # store model
-                with open(os.path.join(output_dir, 'model.pth'), 'wb') as f:
+                with open(os.path.join(output_dir, f'model{i}.pth'), 'wb') as f:
                     torch.save(model.to('cpu').state_dict(), f)
         print('-'*20)
 
-    print(f'Model training time took {(time() - start_time) / 60000} minutes')
+    print(f'Model training time took {(time() - start_time)} s')
 
 
 def validate(model, device, val_loader, loss_fn):
@@ -58,6 +59,8 @@ def validate(model, device, val_loader, loss_fn):
     model.eval()
     correct = 0
     count = 0
+    val_loss = 0.
+    start_time = time()
 
     for batch_idx, (inputs, targets) in enumerate(val_loader):
         inputs, targets = inputs.to(device), targets.to(device)
@@ -65,7 +68,8 @@ def validate(model, device, val_loader, loss_fn):
         # calculate loss
         with torch.no_grad():
             logits = model(inputs)
-            val_loss = loss_fn(logits, targets)
+            loss = loss_fn(logits, targets)
+            val_loss += loss.data.item()
 
             _, outputs = torch.max(logits.data, dim=1)
             correct += torch.sum(torch.eq(outputs, targets))
@@ -78,11 +82,13 @@ def validate(model, device, val_loader, loss_fn):
         #     preds=outputs.tolist(), y_true=targets.tolist(), class_names=CLASSES
         # )})
 
+    val_loss /= (batch_idx + 1)
     accuracy = 100 * correct / count
     if not SUBMISSION_MODE:
         wandb.log({'epoch_val_accuracy': accuracy})
 
     print(f'Val accuracy: {accuracy}')
+    print(f'Time to validate : {(time() - start_time)} s')
     # if best validation, store checkpoint
 
     return val_loss, accuracy
