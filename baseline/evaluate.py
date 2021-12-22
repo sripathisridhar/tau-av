@@ -40,7 +40,7 @@ if args.model_type =='audio':
     mean = mean_std['global_mean']
     std = mean_std['global_std']
     model = l3_dense(512, 10)
-    model_path = './model-audio.pth'
+    model_path = 'models/model-audio.pth'
 
 
 if args.model_type == 'video':
@@ -51,7 +51,7 @@ if args.model_type == 'video':
     std = mean_std['global_std']
     model = l3_dense(512,10)
 
-    model_path = './model-video.pth'
+    model_path = 'models/model-video.pth'
 
 
 if args.model_type == 'audio_video':
@@ -71,7 +71,7 @@ if args.model_type == 'audio_video':
     std_video = mean_std_video['global_std']
 
     model = l3_dense(512*2,10)
-    model_path = './model-baseline.pth'
+    model_path = 'models/model-baseline.pth'
 
 
 def func(name, obj):     # function to recursively store all the keys
