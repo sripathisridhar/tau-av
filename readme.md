@@ -40,4 +40,5 @@ an audio only or video only model.
 
 The evaluate script expects the trained model weights to be in the models/ directory.
 
+The confusion matrices for the audio+video, audio only and video only models are in the outs directory.
 
